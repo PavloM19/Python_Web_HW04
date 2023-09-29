@@ -60,8 +60,11 @@ class MainHandler(BaseHTTPRequestHandler):
         data_json[str(datetime.now())] = data_dict
         
         with open(BASE_DIR.joinpath('storage/data.json'), 'w', encoding='utf-8') as fd:
-            json.dump(data_json, fd, ensure_ascii=False)
-
+            json.dump(data_json, fd, ensure_ascii=False, indent=4) # indent=4 - рекомендація ментора - 
+'''
+Параметр indent=4 указывает, что каждый уровень вложенности в JSON-строке должен быть отделен от предыдущего уровня 4 пробелами. Это делает JSON-данные более читаемыми для человека, хотя увеличивает объем строки.
+Если indent не указан или установлен в None (что является значением по умолчанию), JSON-строка будет минимизирована, то есть все пробелы будут удалены, и JSON-данные будут записаны в строку в самом компактном виде.
+'''
 
 def server_socket():
     print('--Socket start--')
